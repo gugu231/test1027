@@ -1,0 +1,197 @@
+/* 배포 연습 페이지 공통 스타일 */
+:root {
+  --panel: #DDE2E5;
+  --surface: #F2F4F5;
+  --ink: #1B2630;
+  --muted: #55626C;
+  --line: #BAC3C9;
+  --on: #2E9E4C;
+  --warn: #D9971A;
+  --bad: #CF4436;
+  --off: #9AA5AC;
+  --plate: #25323C;
+  --plate-ink: #EEF2F4;
+  --rivet: #8E9AA2;
+  --css-check: ok; /* script.js가 이 값을 읽어 CSS가 올라왔는지 확인합니다 */
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --panel: #141A1F;
+    --surface: #1D252C;
+    --ink: #E3E8EB;
+    --muted: #98A5AE;
+    --line: #34414B;
+    --off: #4E5A63;
+    --plate: #0D1216;
+    --plate-ink: #E3E8EB;
+    --rivet: #5A6670;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+img { max-width: 100%; height: auto; }
+a { color: inherit; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--warn); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 52rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* 머리말 */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.25rem;
+}
+.brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; text-decoration: none; }
+.version {
+  font-weight: 700;
+  font-size: .95rem;
+  padding: .15rem .75rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+}
+
+/* 첫 화면 */
+.hero { padding-block: 2.5rem 3rem; }
+.hero-lead { margin: 0 0 .4rem; color: var(--muted); font-weight: 500; }
+.host {
+  margin: 0;
+  font-size: clamp(2rem, 7.5vw, 4.25rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  overflow-wrap: anywhere;
+}
+.hero-note { margin: 1.1rem 0 0; color: var(--muted); max-width: 38rem; }
+
+/* 리벳 박힌 명판 */
+.plate {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: .9rem 2.4rem;
+  background-color: var(--plate);
+  background-image:
+    radial-gradient(circle at 13px 13px, var(--rivet) 3px, transparent 3.5px),
+    radial-gradient(circle at calc(100% - 13px) 13px, var(--rivet) 3px, transparent 3.5px),
+    radial-gradient(circle at 13px calc(100% - 13px), var(--rivet) 3px, transparent 3.5px),
+    radial-gradient(circle at calc(100% - 13px) calc(100% - 13px), var(--rivet) 3px, transparent 3.5px);
+  color: var(--plate-ink);
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 6px;
+}
+
+/* 점검 패널 */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+h2 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 .3rem; }
+.section-note { margin: 0 0 1rem; color: var(--muted); }
+
+.lamps { list-style: none; margin: 0; padding: 0; }
+.lamps li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: .85rem 0;
+  border-top: 1px solid var(--line);
+}
+.lamps li:first-child { border-top: 0; }
+.lamps strong { display: block; font-weight: 500; }
+.state { display: block; color: var(--muted); font-size: .925rem; }
+
+/* 표시등 */
+.lamp {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: .15rem;
+  border-radius: 50%;
+  background: var(--off);
+  box-shadow: inset 0 -3px 4px rgba(0,0,0,.3), inset 0 2px 2px rgba(255,255,255,.3);
+  transition: background-color .25s, box-shadow .25s;
+}
+.lamp.on {
+  background: var(--on);
+  box-shadow: inset 0 -3px 4px rgba(0,0,0,.25), inset 0 2px 2px rgba(255,255,255,.45),
+              0 0 12px 2px color-mix(in srgb, var(--on) 55%, transparent);
+}
+.lamp.warn {
+  background: var(--warn);
+  box-shadow: inset 0 -3px 4px rgba(0,0,0,.25), inset 0 2px 2px rgba(255,255,255,.45),
+              0 0 12px 2px color-mix(in srgb, var(--warn) 50%, transparent);
+}
+.lamp.bad {
+  background: var(--bad);
+  box-shadow: inset 0 -3px 4px rgba(0,0,0,.25), inset 0 2px 2px rgba(255,255,255,.45),
+              0 0 12px 2px color-mix(in srgb, var(--bad) 50%, transparent);
+}
+
+/* 다시 배포 */
+.steps { margin: .75rem 0 1rem; padding-left: 1.3rem; }
+.steps li { margin-bottom: .45rem; }
+code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: .9em;
+  background: var(--panel);
+  padding: .1em .35em;
+  border-radius: 4px;
+}
+pre {
+  background: var(--plate);
+  color: var(--plate-ink);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+pre code { background: none; padding: 0; }
+.small { margin: 0; color: var(--muted); font-size: .925rem; }
+
+/* 이동 버튼 */
+.next { margin: 0 0 3rem; }
+.button {
+  display: inline-block;
+  font-weight: 700;
+  padding: .75rem 1.3rem;
+  background: var(--ink);
+  color: var(--panel);
+  border-radius: 6px;
+  text-decoration: none;
+}
+.button:hover { opacity: .88; }
+
+footer.wrap {
+  border-top: 1px solid var(--line);
+  padding-block: 1.25rem 2.5rem;
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+@media (max-width: 480px) {
+  .panel { padding: 1.25rem 1rem 1rem; }
+  .plate { padding: .8rem 2rem; font-size: 1.05rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamp { transition: none; }
+}

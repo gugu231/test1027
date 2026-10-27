@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>배포 연습 페이지</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="wrap top">
+    <a class="brand" href="./">
+      <img id="logo" src="images/logo.svg" alt="" width="36" height="36">
+      배포 연습 페이지
+    </a>
+    <!-- ▼ 다시 배포 연습: 아래 v1을 v2로 바꿔서 다시 올려 보세요 -->
+    <span class="version" title="페이지 버전">v1</span>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <p class="hero-lead">이 페이지를 보내준 주소</p>
+      <h1 class="host" id="host">확인 중…</h1>
+      <div class="plate" id="platform">script.js가 작동해야 표시됩니다</div>
+      <p class="hero-note" id="hostNote"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="checks-title">
+      <h2 id="checks-title">배포 점검</h2>
+      <p class="section-note">표시등이 모두 초록이면 파일이 빠짐없이 올라간 것입니다.</p>
+      <ul class="lamps">
+        <li data-check="html">
+          <span class="lamp on" aria-hidden="true"></span>
+          <div><strong>index.html</strong><span class="state">열렸습니다</span></div>
+        </li>
+        <li data-check="css">
+          <span class="lamp" aria-hidden="true"></span>
+          <div><strong>style.css</strong><span class="state">script.js가 작동해야 확인됩니다</span></div>
+        </li>
+        <li data-check="js">
+          <span class="lamp" aria-hidden="true"></span>
+          <div><strong>script.js</strong><span class="state">작동하지 않음 — 파일이 빠졌거나 이름이 다릅니다</span></div>
+        </li>
+        <li data-check="img">
+          <span class="lamp" aria-hidden="true"></span>
+          <div><strong>images/logo.svg</strong><span class="state">script.js가 작동해야 확인됩니다</span></div>
+        </li>
+        <li data-check="page">
+          <span class="lamp" aria-hidden="true"></span>
+          <div><strong>pages/second.html</strong><span class="state">script.js가 작동해야 확인됩니다</span></div>
+        </li>
+        <li data-check="https">
+          <span class="lamp" aria-hidden="true"></span>
+          <div><strong>HTTPS 보안 연결</strong><span class="state">script.js가 작동해야 확인됩니다</span></div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="panel" aria-labelledby="redeploy-title">
+      <h2 id="redeploy-title">다시 배포해 보기</h2>
+      <ol class="steps">
+        <li>index.html을 메모장으로 열고 <code>v1</code>을 <code>v2</code>로 바꿔 저장합니다.</li>
+        <li>바꾼 파일을 다시 올립니다. GitHub는 같은 이름으로 업로드하고, Netlify Drop은 Deploys 페이지에 폴더를 다시 끌어다 놓습니다.</li>
+        <li>1~2분 뒤 <code>Ctrl</code>+<code>Shift</code>+<code>R</code>로 새로고침해서 오른쪽 위 버전이 바뀌었는지 확인합니다.</li>
+      </ol>
+      <p class="small">서버가 알려준 이 파일의 수정 시각: <time id="modified">—</time></p>
+    </section>
+
+    <p class="next"><a class="button" href="pages/second.html">하위 폴더 페이지 열기</a></p>
+
+  </main>
+
+  <footer class="wrap">
+    이 폴더를 그대로 GitHub Pages, Netlify, Cloudflare Pages 어디에 올려도 같은 화면이 나옵니다.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
